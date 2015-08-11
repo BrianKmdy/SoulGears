@@ -42,7 +42,7 @@ public class Initializer {
 			}
 			*/
 		
-			Settings.OS = Settings.LINUX;
+			Settings.OS = Settings.WINDOWS;
 			
 			File fpcalc = null;
 			if (Settings.OS == Settings.WINDOWS)

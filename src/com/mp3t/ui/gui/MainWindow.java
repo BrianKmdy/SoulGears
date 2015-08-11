@@ -315,6 +315,7 @@ public class MainWindow {
 		shell.open();
 		this.scaleSongTableWidgets();
 		
+		/* disable temporarily until new url for version
 		try {
 			fetchVersion();
 			if (!version.equals(Core.PROGRAM_VERSION))
@@ -337,6 +338,7 @@ public class MainWindow {
 			if (Core.DEBUG)
 				e.printStackTrace();
 		}
+		*/
 		
 		if (!Settings.canScan() && couldScan) {
 			MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
@@ -3568,6 +3570,9 @@ public class MainWindow {
 	
 	private void updateTableItem(TableItem item) {
 		Song currentItem = (Song) item.getData(TABLEITEM_DATA_KEY);
+		
+		if (currentItem == null)
+			return;
 		
 		String[] tableEntry = new String[(Settings.imagesEnabled()) ? 11 : 10];
 		int columnIndex = (Settings.imagesEnabled()) ? 1 : 0;

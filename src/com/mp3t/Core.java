@@ -9,6 +9,7 @@
 
 /* TO-DO:
  *			-Save settings to local folder
+ *			-(Windows) Crash on add songs in updateTableItem
  *
  *			[Low Priority]
  * 			-(Windows) Display only updates when mouse is over song table
