@@ -1,0 +1,353 @@
+Changelog
+---------
+	Version History
+		V0.21 ??/??/2005
+			Description:
+				Maintenance release
+			Features:
+				Audioformats: Introduced AudioFileModificationListener for global handling of file changes.
+			So now one can alter an audio file before its actually modified, or just after it has been modified.
+			Because of that the AudioFileIO's and AudioFileWriter's "delete" methods need AudioFile instances
+			instead of simple java.io.File instances.
+				Entagged now allows the preservation of the file modification time.
+				When the new renaming was released, the track number extension was lost, since that was noticed
+			by users, its reimplemented as an option.
+				The tageditor now supports automatic refresh of the folder content table (activate in "General Options).
+				Add a new transformtion: capitalize first letter only
+				Comment fields are written with the language code of the current installation. So on non
+			english systems the the windows property page and WMP should display the comment text for ID3V2.
+			An already existing comment field will be replaced. If there are more comment fields, the
+			first one (random) will be replaced. If one of them is already in the systems language, it will
+			be handled as the top field (first field) and will be modified.
+			Bugfixes:
+				Use UTF-16LE by default when using UTF16, or WMP looses his pants
+			To Do:
+				
+
+		V0.20 14/09/2005
+			Description:
+				Maintenance release
+			Features:
+				Freedb: Using floats for id calculation leads to better results and more perfect matches
+				Audioformats: Return the precise length as a float with the new getPreciseLength methods
+			Bugfixes:
+				Fixes handling of encoding preferences. The bug resulted in UTF16 being always used
+				Deadlock in swing with autocompletion, and more little fixes
+			To Do:
+				
+
+		V0.19 02/07/2005
+			Description:
+				Rename improved, maintance
+			Features:
+				Allow to choose wether to use UTF16 or ISO for id3 tags
+				Liree did a spanking new rename function with tree preview and many other goodies
+				Possibility to use bitrate in directory patterns
+			Bugfixes:
+				Various little unimportant fixes
+			To Do:
+				
+
+		V0.18 25/02/2005
+			Description:
+				Maintenance release
+			Features:
+				Using Unicode by default for id3 tags, alowing use for rich charsets
+				audioformats api:Big rewrite, the structure is now more clear for each format
+				audioformats api:ASF update to handle more cases
+				audioformats api:OGG fields with no "=" are now handled, plus some other ogg bugfixes
+				audioformats api:Update of MP3 bitrate and length handling for special mp3's
+				audioformats api:Some new methods in the audioformats API, lists, etc
+				Introducing a statistics tool, to view various stats about your collection
+				Updated translations for french, spanish, english and german
+				New transformation added, which will replace non us-ascii characters with underscores, or will try to find a similar us-ascii character to replace with ('�' will become 'a')
+			Bugfixes:
+				Using a file pattern that leads to an existing filname can delete the renamed file
+				Remove the gridlines on the table
+				When renaming files, skip files that have no content for the requested field
+				When transforming, capitalizing sometimes ignored previous transformations
+			To Do:
+				
+
+		V0.17 08/01/2005
+			Description:
+				Fixes startup for first time users :).
+			Features:
+				Improved again keyboard edition, with sensible focus changes
+					with TAB key, etc, just try it !
+			Bugfixes:
+				Fixes the startup error first-time users experienced
+				Fixes deletion of id3 tag even if there is some garbage
+				between the end of the tag and the beginning of the audio
+				Fixes bug that prevented to correclty tag multi-lined comments
+				Fixed bug that prevented from writing correct id3v1 tag if no track number set
+				Capitalization at new lines too
+			To Do:
+				
+
+		V0.16 08/01/2005
+			Description:
+				Fixes mp3 tagging bug, improves UI a lot.
+			Features:
+				New transformation added, which will replace / and \ to -
+				Autocompleting path field, If not modifying path, a list of parent directories is offerded.
+				Coloration denote if typed path exists or not.
+				Patterns now have highlighting of valid masks (eg. <artist>).
+				Navigating through the table with keyboard 
+           			 (left or backspace for previous visited directory, 
+ 			         ALT-Up for parent directory, right for entering directory,
+ 			         ENTER will enter a single selected directory, if a file or more
+ 			         than one item is selected, the tag editing panel is selected.)
+ 			         F5 will perform a reload.
+				The pattern fields of "Rename from tag" and "Tag from filename"
+ 			         do now help with a list of completions if you wait 500 ms after
+ 			         entering "<"
+				Manual-Freedb: If freedb offers the track offsets from the cd it is possible
+			         to compute the track lengths. If provided the matching dialog warns with yellow
+			         background if assigned result differs in duration about more than 2 seconds.
+			         Additional there is a new automatic arrangement button.
+			Bugfixes:
+				Listing wizard now takes selected directory as initial directory (if possible)
+				Ogg/Flac files weren't recognized as tagged or untagged properly
+				Manual-Freedb: The track number is now taken from the freedb result.
+				ID3v2 tag was incorrectly overwritten (size should be 10 bytes more).
+			To Do:
+				
+
+		V0.15.1 01/01/2005
+			Description:
+				First release this year :) fixes the ogg corruption bug with some files introduced in 0.15.
+			Features:
+				None
+			Bugfixes:
+				Fixes the ogg corruption bug
+				Fixes handling of non-standard COMMENT and TRACK fields in ogg files
+				The progress dialog closes when nothing wrong hapens
+				Improved WMA file handling, some part of the tag were optional but not recognized as such
+			To Do:
+				
+
+		V0.15 23/12/2004
+			Description:
+				Big major UI improvements
+			Features:
+				Added a Listing generator, that can browse a directory and generate an xml,html,csv listing of all audio files
+				Multi-lined comments in tags (for tag format that support it)
+				Added automated Track number enumeration
+				GUI improved a lot thanks to Christian !
+			Bugfixes:
+				Tag fom filename:multiple <ignore> masks, and check for erroneous multiple other masks (there can be no <artist> twice either in dir or filename mask or both)
+				Look And feel selection fixed
+			To Do:
+				
+
+		V0.14 06/12/2004
+			Description:
+				Adds a manual freedb selection matching dialog, small bugfixes, now supports wma files
+			Features:
+				audioformats-api: Complete rewrite of the id3v2 tag handling, more object oriented
+				audioformats-api: new support for tagging wma (version 9)
+				German language is now available
+				freedb: connections can now be made through a proxy
+				manual freedb shows a dialog if there are less selected files than freedb tracks, to choose from.
+				When entering a directory, the clicked dir is remembered, when clicking parent, the table scrolls to the saved dir, this makes navigation easier
+				Command line tools: Creation of XML reports and converting them to html or csv using XSL.
+			Bugfixes:
+				audioformats-api: Flac and vorbis tags now save TRACKNUMBER and DESCRIPTiON, instead of TRACK and COMMENT, as requested by the vorbis specs
+				Fixed recursive tagging with freedb (wasn't woring at all)
+			To Do:
+				
+
+		V0.13 07/11/2004
+			Description:
+				Big Bugfix !
+			Features:
+				Very small correction in spanish lang file
+			Bugfixes:
+				Under windows entagged could not write/delete tags because of file locking issues
+			To Do:
+				
+
+		V0.12 06/11/2004
+			Description:
+				Minor feature and bugfixes, enjoy
+			Features:
+				Added tag deletion to the audioformats api
+				A delete tags button in the tag editor allows to delete tags from the selected files
+			Bugfixes:
+				Fixed a crash when starting entagged and the last working dir do not exists anymore
+				Fixed a bug that prevented to properly write ogg tags
+			To Do:
+				
+
+		V0.11 30/10/2004
+			Description:
+				
+			Features:
+				freedb-api: Freedb API has been completely rewritten ! More clear, and adds a full text search feature, through the freedb search page
+				freedb-api: Get the available http servers
+				freedb: Manual freedb search instead of requiring the user to manually search freedb allows to search directly within the tag editor
+				freedb: Sorts the results of a freedb query ascending by quality, most of the time the last entry listed is the best you can have (based on some guessing about filled values and length of the fields)
+				freedb: Option panel to set various freedb config (server, etc)
+				gui: Possibility to clear the list of masks
+				audioformats-api: Improved support for Id3v2.2 and 2.3, all frame should be kept and rewritten whan a tag is modified
+				audioformats-api: Added mpc (mp+) support for v7 Stream versions, and APE tags (used also in Monkey Audio)
+				some more that i just can't remember !
+			Bugfixes:
+				Capitalize didn't work properly, fixed
+				Pressing enter on one of the fields is like pressing save (or rename or tag, etc)
+				Focus order fixed (mainly) for all the contorl panels (tab-cycle is ok)
+				Save the selected transformations across sessions, as well as last used masks and directory pattern selection
+				When renaming a file to the same name, except the case, no more error is displayed, but i can't make java to rename case sensitively, so the name stay the same..
+				Fixed some little unsigned bytes in he mp3 library
+				Fixed some little bugs in the audioformats library (lone tmp files, etc)
+			To Do:
+				Correct (if they can be found) the remaining bugs in ape, mpc support..
+
+		V0.10 20/06/2004
+			Description:
+				This is a major release, as it fixes many small bugs, and many big bugs, especially in file tagging/renaming in windows, some weird bugs in mp3,ogg and flac tag reading/writing. Interface also changed a bit to become much simpler ! Recursive operations have been implemented, what more do you want ??
+			Features:
+				Recursive processing: When a directory is selected, all audio files under it are processed
+				Tag transformations: Uppercase, Capitalize, and many more
+				Variable text can be ignored when tagging from filename
+				New file browsing interface. Faster!
+				Spanish translation
+				Audio file processing and freedb as separate libraries
+			Bugfixes:
+				Tag from filename now works on windows :)
+				Fixed unclosed files bug
+				Fixed lack of resources exception when working with big directories
+				Fixed file length detection in some mp3 files with trash
+				Fixed ID3v2.3 big tag reading and writting
+			To Do:
+				Many things .. :)
+
+		V0.09 14/04/2004
+			Description:
+				This version is a complete rewrite, so the old changelog doesn't apply anymore
+			Features:
+				See readme for all (old and) new features
+			Bugfixes:
+				Plenty ? :)
+			To Do:
+				Now that this is done, new feature will start to be added, with more formats, and who knows what ..
+
+		V0.08 15/11/2003
+			Description:
+				After a long quiet period, because I hadn't a lot of time, a quick update to fix some bugs, and nice features added
+			Features:
+				Option panel, allows to change langage, and track formatting patterns
+				Track formatting pattern, allows to define how to rename track numbers when renaming from freedb, ex: 14/25 or 13 or "12 foo 24" anything can be done !
+				Alpha version of the library, it can scan folder show the contents in a tree view, but beside that it can do nothing interesting :)
+			Bugfixes:
+				Corrected ID3v1 bug if track number was not a number, it replace it by 0 now
+				many minor bugs that i found, some bugfixes also on mp3 reading/writing
+			To Do:
+				Working on the html export and other things, searching, etc... by the time you could test the db
+
+		V0.07 29/09/2003
+			Description:
+				Minor Bugfixes..
+			Features:
+				Possible to change the order of the files in the table (instead of filename order), for freedb to work if the files aren't in the correct order
+				Copying from id3v1/2 to another, now copies the entire tag (even if there are multiples files selected) instead of the text in the fields only
+			Bugfixes:
+				Corrected a bug introduced on v0.06, if a invalid root is chosen (like an empty cdrom or floppy) the program would crash and can't restart, this is fixed
+				The dialog are not correctly childed, when the main window goes to back (looses focus) and then come to front, the dialogs are shown.
+				Handles the case of the files trying to be writed are read only or you don't have the permission to write, it shows a messages, but don't crash
+				Don't crash if freedb return a 200 exact match
+				Better handling of the filename -> Tag (reluctant quantifiers in regex) (now works with eg. 01 title (%4 %3)).
+				I don't know if it's working, but I forced to use "ISO-8859-1" charset (8bit encoding of each character) to prevent ID3 tag corruption with foreign langage
+			To Do:
+				Music Library, I Know.. Beside That, a nice option panel...
+
+		V0.06 24/09/2003
+			Description:
+				This is a quick fix to make the program run under Linux !!! 
+			Features:
+				It is now possible to toggle the display of the id3v1 or v2 tag in the tag editor table
+				Generate pls and m3u playlists in the currently selected folder
+				Now has a toolbar, instead of buttons on the bottom of the window
+			Bugfixes:
+				Freedb bug when the artist name isn't correctly formed, it can now handles with it.
+				More Strings are translatable
+				Runs Under Linux
+			To Do:
+				
+
+		V0.05 21/09/2003
+			Description:
+				This release improve a lot the GUI, with java look and feel's support (a lot of !)
+			Features:
+				Java look and feels supported (the java ones, plus some other found on www.javootoo.com) and packaged with the release
+				A preference module now saves the last options selected (the last drive used, the checkboxes, some settings and so on)
+				Multi-Langage enabled, entagged can now be easily translated ! (operational for the next release)
+				(experimental) You can rename a file directly in the table, editing the corresponding cell.
+			Bugfixes:
+				Still more bugfixes in the ID3 tag reading, the correct length will now be computed virtually every time, even if the file is a bit damaged..(well at least I hope so :) )
+				ID3 tag reading more tolerant with the badly formed id3v2 tags (ie bad length, null padded files with no tag, ..)
+				When the program starts, it doesn't check anymore if there is a floppy ! and remembers the last drive used
+				When there are no freedb results, the program doesn't crash anymore.
+				When saving an empty field, sometimes the program crashes, this is fixed
+				The icons are now correct in the Filesystem tree (showing directories with mp3 only as leafs)
+				Support the empty id3v1 genre content (0xFF value)
+				Some debug values were printed out, this is fixed, now it prints only the user understandable infos
+				ID3v2 advanced now shows only the interesting frames
+			To Do:
+				The MP3 Library will soon appear, we are working hard on it !
+
+		V0.04 10/09/2003
+			Description:
+				This release focuses on performance upgrade, the reading/writing routines have been greatly improved
+			Features:
+				It is now very hard to go faster !! 
+				Added the advanced ID3v2 editing features (this is not finished but the main thing is there)
+				The Rename funtion with regex
+			Bugfixes:
+				The freedb tagging works with id3v1 and/or id3v2
+				The id3v2 tag now overwrites the old one if there is enough room instead of rewriting the whole file
+				Plenty of bugs corrected ! (always the same thing :) )
+			To Do:
+				I think we will focus on the mp3 Library for a moment but this is unsure...
+
+		V0.03 04/09/2003
+			Description:
+				There it is ! many GUI improvements, still very far from perfect !
+			Features:
+				File Renamer is now fully functionnal, though not fool proof, you should use it wisely !
+				The freedb is now functionnal with a nice GUI, due to a bug, you can only save the id3v2tags
+				Possibility to copy the ID3v2 from id3v1 and vice versa
+				Selection of the root directory is now allowed(a little buggy though)
+			Bugfixes:
+				Fixed bugs in the ID3 reader (for the comment field mostly)
+				a little more stable in case of bad id3v2 tags, but very perfectible !
+			To Do:
+				I think the next release will focus mainly on improving the read routine (i'm tired of designing gui for the moment :)
+
+		V0.02 01/09/2003
+			Description:
+				Second release a lot of improvemnts in basic stability and an added File Renamer module
+			Features:
+				Renaming the files of an album with the id3v2 tag and a totally custom mask
+			Bugfixes:
+				Now it can handle with a folder with not only mp3's, it will take only those
+				It can also handles the mp3 that haven't been yet tagged
+				Some minor bugs that made the program crash are now fixed, this is a general stability improvement.
+			To Do:
+				This version should really be useable by anyone. I have to fix the hardcoded c:\ drive for the tree root so one can access other drives... I have also to make a better Dialog for the FIle renaming to use the full potential of the module i have written (renaming from tag and tagginf from filename, all with custom patterns...)
+
+		V0.01 31/08/2003
+			Description:
+				This is the First working version.: you can save and read id3v1 and id3v2 tags (but i don't recommend doing it with sensitive mp3 :), You can also make a freedb query and write one of the results, but not change it...
+			Features:
+				Saving raw informations gathered with freedb (no changes are allowed for now)
+				Saving/Reading id3v1 and id3v2 tags file per file or on multiple selection
+			Bugfixes:
+				Diplay of the time format now its ##:## with zeroes if needed
+				Comment in ID3v2 are now saved correctly, with the eng\u0000 langage
+				Comment in id3v1 is now working properly, even with freedb and uses a combobox
+			To Do:
+				For the moment, the main things I plan to do are, a gui for the freedb results, so one can change the results gathered from the freedb to suits his needs, fixing some bugs I encounter :), and maybe for the next release a file renamer based on id3tag with custom pattern renaming...
+
+*Last Update: $Id: changelog.xml,v 1.43 2005/11/27 12:11:11 liree Exp $
