@@ -10,6 +10,8 @@ import javax.json.Json;
 import javax.json.stream.JsonParser;
 import javax.json.stream.JsonParser.Event;
 
+import org.eclipse.swt.widgets.Display;
+
 import acoustID.Recording;
 import acoustID.Recordings;
 import acoustID.Release;
@@ -17,6 +19,7 @@ import acoustID.Release;
 public class SongScanner implements Runnable {
 
 	private Song[] songs;
+	private Display display;
 	
 	private LinkedList<Song> changedSongs;
 	private LinkedList<Song> scannedSongs;
@@ -24,8 +27,9 @@ public class SongScanner implements Runnable {
 	private int numSongsRemaining;
 	private int numChanges;
 	
-	public SongScanner(Song[] songs) {
+	public SongScanner(Song[] songs, Display display) {
 		this.songs = songs;
+		this.display = display;
 		
 		for (int i = 0; i < songs.length; i++)
 			songs[i].setQueuedToScan(true);
@@ -50,6 +54,7 @@ public class SongScanner implements Runnable {
 			songs[i].setQueuedToScan(false);
 			songs[i].setScanned(true);
 			songs[i].setError(false);
+			display.wake();
 		}
 	}
 	
@@ -121,7 +126,7 @@ public class SongScanner implements Runnable {
 		    	}
 		    }
 		    
-		    Recordings recordings = new Recordings(new URL("http://api.acoustid.org/v2/lookup?client=8XaBELgH&meta=recordings+tracks+releases+compress&format=json" + "&duration=" + duration + "&fingerprint=" + fingerprint));
+		    Recordings recordings = new Recordings(new URL("http://api.acoustid.org/v2/lookup?client=PUAVU3LKzJ&meta=recordings+tracks+releases+compress&format=json" + "&duration=" + duration + "&fingerprint=" + fingerprint));
 		    Recording firstRecording = recordings.getFirstRecording();
 		    Release firstRelease = firstRecording.getFirstRelease();
 		    

@@ -13,16 +13,15 @@
  *
  *			[Low Priority]
  * 			-(Windows) Display only updates when mouse is over song table
- * 			-(Linux) Program locks the fuck up when there's no net connection
+ * 			-(Linux) Program locks the up when there's no net connection
  *			-(Linux) Program locks up when sorting while loading songs
  *			-(Mac & Linux) UI doesn't refresh unless mouse is moving
  *			-(Linux) Unresponsive when refreshing after a sort on linux
- *			-(Linux) Text wrap no work
+ *			-(Linux) Text wrap doesn't work
  */
 
 /* Maybe someday
  * 
- *  *			[               :'(                 ]
  *			-(Mac) Crash when selecting table item then clicking on table
  *			-(Mac) Buttons too short for icons
  *			-(Mac) Can't scroll song table while text boxes are selected
@@ -252,7 +251,7 @@ public class Core implements Runnable {
 	    int bufferIndex = 0;
 	    
 		while (stillAlive) {
-			/* If given the refresh command activate the refreshing process, reset the indexes, and set refresh to false */
+			/* If given the refresh command activate the refreshing process, reset the indices, and set refresh to false */
 			
 			if (refresh) {	
 				refresh = false;
@@ -290,6 +289,7 @@ public class Core implements Runnable {
 								
 								newSongs.add(newSong);
 							}
+							display.wake();
 							
 							addedSongIndex++;
 						}
@@ -357,6 +357,7 @@ public class Core implements Runnable {
 										
 										newSongs.add(newSong);
 									}
+									display.wake();
 								}
 							/* If something goes wrong creating the song object then do nothing (Print a warning in debug mode) */
 							} catch (Exception e) {

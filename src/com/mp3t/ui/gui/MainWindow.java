@@ -211,7 +211,7 @@ public class MainWindow {
 	
 	private Button newLocationButton;
 	private Button deleteOriginalButton;
-	private Button removeFramesButton;
+	//private Button removeFramesButton;
 	private Button overwriteButton;
 	
 	private Label outputLocationLabel;
@@ -642,7 +642,7 @@ public class MainWindow {
 			
 			openFilesButton = new Button(searchComposite, SWT.PUSH);
 			openFilesButton.setImage(image3);
-			openFilesButton.setToolTipText("Load individual mp3 file(s)");
+			openFilesButton.setToolTipText("Load individual audio file(s)");
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			System.exit(0);
@@ -981,10 +981,10 @@ public class MainWindow {
 		overwriteButton.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false, 1, 1));
 		overwriteButton.setToolTipText("If any files with the output name already exist, delete them before saving");
 		
-		removeFramesButton = new Button(checkboxComposite, SWT.CHECK);
-		removeFramesButton.setText("Remove unnecessary tags from file");
-		removeFramesButton.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false, 1, 1));
-		removeFramesButton.setToolTipText("If the mp3 file has any tags that aren't specified within this program they will be removed");
+		//removeFramesButton = new Button(checkboxComposite, SWT.CHECK);
+		//removeFramesButton.setText("Remove unnecessary tags from file");
+		//removeFramesButton.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false, 1, 1));
+		//removeFramesButton.setToolTipText("If the file has any tags that aren't specified within this program they will be removed");
 		
 		Composite saveComposite = new Composite(finalizeGroup, SWT.NONE);
 		gridLayout = new GridLayout(1, true);
@@ -1049,8 +1049,8 @@ public class MainWindow {
 			public void widgetSelected(SelectionEvent e) {			
 				FileDialog openFolderDialog = new FileDialog(shell, SWT.MULTI);
 				
-				//String[] filterExtensions = {"*.mp3;*.ogg;*.flac;*.wav;*.wma"};
-				String[] filterExtensions = {"*.mp3"};
+				String[] filterExtensions = {"*.mp3;*.ogg;*.flac;*.ape;*.mpc;*.wma"};
+				//String[] filterExtensions = {"*.mp3"};
 				
 				openFolderDialog.setFilterExtensions(filterExtensions);
 				String result = openFolderDialog.open();
@@ -2547,7 +2547,7 @@ public class MainWindow {
 				songs[i].setError(false);
 			}
 			
-			songScanner = new SongScanner(songs);
+			songScanner = new SongScanner(songs, display);
 			
 			toggleScanSelectedButton();
 			toggleScanAllButton();
@@ -2822,7 +2822,9 @@ public class MainWindow {
 		}
 		
 		
-		saveProgressWindow = new SaveProgressWindow(shell, display, songs, newLocationButton.getSelection(), outputFormatField.getText(), outputLocationField.getText(), deleteOriginalButton.getSelection(), removeFramesButton.getSelection(), overwriteButton.getSelection(), onlyShowErrors);
+		//saveProgressWindow = new SaveProgressWindow(shell, display, songs, newLocationButton.getSelection(), outputFormatField.getText(), outputLocationField.getText(), deleteOriginalButton.getSelection(), removeFramesButton.getSelection(), overwriteButton.getSelection(), onlyShowErrors);
+		saveProgressWindow = new SaveProgressWindow(shell, display, songs, newLocationButton.getSelection(), outputFormatField.getText(), outputLocationField.getText(), deleteOriginalButton.getSelection(), false, overwriteButton.getSelection(), onlyShowErrors);
+
 		
 		saveProgressWindow.getShell().addDisposeListener(new DisposeListener() {
 			public void widgetDisposed(DisposeEvent e) {
@@ -4221,7 +4223,8 @@ public class MainWindow {
 	 * 
 	 */
 	private void loadSettings() {
-		String path = Core.HOME_PATH + SETTINGS_FILE;
+		//String path = Core.HOME_PATH + SETTINGS_FILE;
+		String path = SETTINGS_FILE;
 		
 		try {
 			DataInputStream dis = new DataInputStream(new FileInputStream(path));
@@ -4246,7 +4249,8 @@ public class MainWindow {
 					newLocationButton.setSelection(dis.readBoolean());
 					deleteOriginalButton.setSelection(dis.readBoolean());
 					overwriteButton.setSelection(dis.readBoolean());
-					removeFramesButton.setSelection(dis.readBoolean());
+					//removeFramesButton.setSelection(dis.readBoolean());
+					dis.readBoolean();
 					capitalizeButton.setSelection(dis.readBoolean());
 					
 					int capitalizeSelection = dis.readInt();
@@ -4303,7 +4307,8 @@ public class MainWindow {
 	}
 	
 	private void saveSettings() {
-		String path = Core.HOME_PATH + SETTINGS_FILE;
+		//String path = Core.HOME_PATH + SETTINGS_FILE;
+		String path = SETTINGS_FILE;
 		
 		try {
 			(new File(Core.HOME_PATH)).mkdir();
@@ -4317,7 +4322,8 @@ public class MainWindow {
 			dos.writeBoolean(newLocationButton.getSelection());
 			dos.writeBoolean(deleteOriginalButton.getSelection());
 			dos.writeBoolean(overwriteButton.getSelection());
-			dos.writeBoolean(removeFramesButton.getSelection());
+			//dos.writeBoolean(removeFramesButton.getSelection());
+			dos.writeBoolean(false);
 			dos.writeBoolean(capitalizeButton.getSelection());
 			
 			if (capitalizeProperButton.getSelection())

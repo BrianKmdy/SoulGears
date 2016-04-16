@@ -26,6 +26,7 @@ public class GUI implements UserInterface {
 	
 	public GUI(Core core, SongLoader songLoader, int thumbnailWidth) {
 		
+		Display.setAppName(Core.PROGRAM_NAME);
 		display = new Display();
 		
 		new MainWindow(display, core, songLoader, thumbnailWidth);

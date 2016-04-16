@@ -959,10 +959,12 @@ public class Song {
 	public static boolean isValidExt(String filename) {
 		switch(filename.substring(filename.lastIndexOf('.') + 1)) {
 			case "mp3":
-			//case "ogg":
+			case "ogg":
 			//case "wav":
-			//case "wma":
-			//case "flac":
+			case "wma":
+			case "flac":
+			case "ape":
+			case "mpc":
 				return true;
 			default:
 				return false;
