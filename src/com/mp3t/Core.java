@@ -8,24 +8,10 @@
  */
 
 /* TO-DO:
- *			-Save settings to local folder
- *			-(Windows) Crash on add songs in updateTableItem
- *
- *			[Low Priority]
- * 			-(Windows) Display only updates when mouse is over song table
- * 			-(Linux) Program locks the up when there's no net connection
- *			-(Linux) Program locks up when sorting while loading songs
- *			-(Mac & Linux) UI doesn't refresh unless mouse is moving
- *			-(Linux) Unresponsive when refreshing after a sort on linux
  *			-(Linux) Text wrap doesn't work
- */
 
-/* Maybe someday
- * 
- *			-(Mac) Crash when selecting table item then clicking on table
  *			-(Mac) Buttons too short for icons
  *			-(Mac) Can't scroll song table while text boxes are selected
- *			-(Mac) Higher res icon (and maybe for other operating systems too)
  *			-(Mac) No version URL link
  *
  * * 			-Clearing tags doesn't work for entagged
@@ -41,21 +27,21 @@ import org.eclipse.swt.widgets.Display;
 
 public class Core implements Runnable {
 	
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 	
 	public static final String PROGRAM_NAME = "SoulGears";
 	public static final String PROGRAM_VERSION = "1.0";
 	public static final String AUTHOR_NAME = "Brian Moody";
-	public static final String PUBLICATION_DATE = "12/24/2013";
+	public static final String PUBLICATION_DATE = "4/16/2016";
 	
 	public static final String PROGRAM_NAME_HEADER = "[" + PROGRAM_NAME + "] ";
 	
 	public static final String DEBUG_HEADER = "[Debug] ";
 	public static final String ERROR_HEADER = "[Error] ";
 	
-	public static final String VERSION_URL = "http://soulgears.com/version.txt";
-	public static final String DOWNLOAD_URL = "http://soulgears.com/download";
-	public static final String USERGUIDE_URL = "http://soulgears.com/userguide";
+	public static final String VERSION_URL = "https://sourceforge.net/p/soulgears/code/ci/master/tree/version.txt?format=raw";
+	public static final String DOWNLOAD_URL = "https://sourceforge.net/projects/soulgears/files/?source=navbar";
+	public static final String USERGUIDE_URL = "https://sourceforge.net/p/soulgears/wiki/Home/";
 	
 	public static final String HOME_PATH = System.getProperty("user.home") + System.getProperty("file.separator") + '.' + PROGRAM_NAME.toLowerCase() + System.getProperty("file.separator");
 	

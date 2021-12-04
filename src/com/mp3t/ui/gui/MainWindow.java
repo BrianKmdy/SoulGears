@@ -315,7 +315,6 @@ public class MainWindow {
 		shell.open();
 		this.scaleSongTableWidgets();
 		
-		/* disable temporarily until new url for version
 		try {
 			fetchVersion();
 			if (!version.equals(Core.PROGRAM_VERSION))
@@ -338,7 +337,6 @@ public class MainWindow {
 			if (Core.DEBUG)
 				e.printStackTrace();
 		}
-		*/
 		
 		if (!Settings.canScan() && couldScan) {
 			MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);

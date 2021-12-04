@@ -31,8 +31,8 @@ import entagged.audioformats.exceptions.CannotWriteException;
  * as well as the methods necessary to do so.
  * 
  * @author Brian Moody
- * @date 9/19/2012
- * @version 0.2
+ * @date 4/1/2016
+ * @version 1.0
  */
 
 public class Song {
